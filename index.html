@@ -13,12 +13,13 @@
       --headline: #232323;
       --paragraph: #222525;
       --button: #078080;
-      --button-text: #232323;
+      --button-text: #ffffff;
       --stroke: #232323;
       --secondary: #f45d48;
       --main: #ffffff;
       --tertiary: #f8f5f2;
       --highlight: #078080;
+      --shadow: rgba(20, 20, 20, 0.78);
     }
 
     * {
@@ -39,8 +40,18 @@
     }
 
     header {
-      background: var(--background);
-      border-bottom: 1px solid var(--stroke);
+      background: #e8ebe9;
+      border-bottom: 1px solid #c9d1cf;
+      color: var(--headline);
+    }
+
+    header .logo,
+    header .nav-links a {
+      color: var(--headline);
+    }
+
+    header .nav-links a:hover {
+      color: var(--highlight);
     }
 
     .container {
@@ -110,11 +121,27 @@
       width: 100%;
       border-radius: 28px;
       border: 1px solid var(--stroke);
-      box-shadow: 12px 12px 0 var(--stroke);
+      box-shadow: 12px 12px 0 var(--shadow);
     }
 
     section {
+      margin: 0;
+    }
+
+    .section {
       padding: 60px 0;
+    }
+
+    .section-fill {
+      background-color: var(--main);
+    }
+
+    .section-tint {
+      background-color: #f4f6f6;
+    }
+
+    .section-hero {
+      padding: 40px 0 60px;
     }
 
     h2 {
@@ -146,7 +173,7 @@
       border: 1px solid var(--stroke);
       border-radius: 24px;
       padding: 32px;
-      box-shadow: 10px 10px 0 var(--stroke);
+      box-shadow: 10px 10px 0 var(--shadow);
     }
 
     .menu-grid {
@@ -157,16 +184,86 @@
 
     .menu-item {
       background-color: var(--main);
+      cursor: pointer;
       border: 1px solid var(--stroke);
       border-radius: 20px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       transition: transform 0.2s ease;
+      box-shadow: 12px 12px 0 var(--shadow);
     }
 
     .menu-item:hover {
       transform: translateY(-6px);
+    }
+
+    .menu-modal {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 999;
+    }
+
+    .menu-modal.is-visible {
+      display: flex;
+    }
+
+    .menu-modal__content {
+      background-color: var(--main);
+      border-radius: 24px;
+      border: 1px solid var(--stroke);
+      max-width: min(720px, 92%);
+      width: 100%;
+      padding: 24px;
+      box-shadow: 18px 18px 0 var(--shadow);
+      position: relative;
+    }
+
+    .menu-modal__image {
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid var(--stroke);
+      margin-bottom: 20px;
+    }
+
+    .menu-modal__title {
+      font-family: 'Playfair Display', serif;
+      color: var(--headline);
+      margin: 0 0 12px;
+    }
+
+    .menu-modal__description {
+      margin: 0 0 18px;
+    }
+
+    .menu-modal__price {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background-color: var(--tertiary);
+      font-weight: 600;
+      color: var(--headline);
+    }
+
+    .menu-modal__close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: transparent;
+      border: none;
+      color: var(--headline);
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+
+    body.modal-open {
+      overflow: hidden;
     }
 
     .menu-item img {
@@ -206,7 +303,7 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 32px;
       align-items: center;
-      box-shadow: 14px 14px 0 var(--stroke);
+      box-shadow: 14px 14px 0 var(--shadow);
     }
 
     .story img {
@@ -241,7 +338,7 @@
       border-radius: 20px;
       padding: 24px;
       position: relative;
-      box-shadow: 10px 10px 0 var(--stroke);
+      box-shadow: 10px 10px 0 var(--shadow);
     }
 
     .testimonial-card::before {
@@ -261,7 +358,7 @@
       border: 1px solid var(--stroke);
       padding: 40px;
       text-align: center;
-      box-shadow: 12px 12px 0 var(--stroke);
+      box-shadow: 12px 12px 0 var(--shadow);
     }
 
     .reservation p {
@@ -281,7 +378,7 @@
       border: 1px solid var(--stroke);
       border-radius: 24px;
       padding: 32px;
-      box-shadow: 12px 12px 0 var(--stroke);
+      box-shadow: 12px 12px 0 var(--shadow);
       display: flex;
       flex-direction: column;
       gap: 18px;
@@ -312,7 +409,7 @@
       background-color: var(--main);
       border: 1px solid var(--stroke);
       border-radius: 24px;
-      box-shadow: 12px 12px 0 var(--stroke);
+      box-shadow: 12px 12px 0 var(--shadow);
       overflow: hidden;
     }
 
@@ -325,9 +422,20 @@
 
     footer {
       padding: 36px 0;
-      border-top: 1px solid var(--stroke);
+      background-color: #0f8f8f;
+      border-top: 1px solid #045f5f;
       text-align: center;
       font-size: 0.95rem;
+      color: #f8f5f2;
+    }
+
+    footer a {
+      color: #f8f5f2;
+      text-decoration: underline;
+    }
+
+    footer a:hover {
+      color: #0bcccc;
     }
 
     @media (max-width: 640px) {
@@ -343,7 +451,7 @@
       }
       .location-card,
       .map-card {
-        box-shadow: 8px 8px 0 var(--stroke);
+        box-shadow: 8px 8px 0 var(--shadow);
       }
       .map-card iframe {
         min-height: 260px;
@@ -368,130 +476,153 @@
   </header>
 
   <main>
-    <section class="hero container">
-      <div>
-        <h1>旬の香りとスパイスで、新しいタイの味を。</h1>
-        <p>Sabai Thai Kitchenでは、ハーブの香りとココナッツの甘みが絡み合う本場の味を、おしゃれで落ち着いた空間でお楽しみいただけます。現地で磨いた技術と、季節の食材で仕立てる一皿をぜひ。</p>
-        <a class="btn" href="#reserve">テーブルを予約する</a>
-      </div>
-      <img src="images/hero-table.jpg" alt="テーブルに並ぶタイ料理">
-    </section>
-
-    <section id="menu" class="container">
-      <h2>Signature Menu</h2>
-      <div class="menu-grid">
-        <article class="menu-item">
-          <img src="images/tomyankun.jpg" alt="トムヤムクン">
-          <div class="menu-item-content">
-            <h3>トムヤムクン</h3>
-            <p>有頭エビの旨みとレモングラスの香り、ココナッツミルクのまろやかさが溶け合う人気のスープ。</p>
-            <span>¥1,280</span>
-          </div>
-        </article>
-        <article class="menu-item">
-          <img src="images/gapaorice.jpg" alt="ガパオライス">
-          <div class="menu-item-content">
-            <h3>ガパオライス</h3>
-            <p>ホーリーバジルと鶏挽肉を甘辛く炒めた定番料理。目玉焼きとジャスミンライスでどうぞ。</p>
-            <span>¥1,180</span>
-          </div>
-        </article>
-        <article class="menu-item">
-          <img src="images/green-curry.jpg" alt="グリーンカレー">
-          <div class="menu-item-content">
-            <h3>グリーンカレー</h3>
-            <p>青唐辛子とココナッツミルクのバランスが光る、クリーミーでスパイシーな逸品。</p>
-            <span>¥1,320</span>
-          </div>
-        </article>
-        <article class="menu-item">
-          <img src="images/mango-sticky-rice.jpg" alt="マンゴースティッキーライス">
-          <div class="menu-item-content">
-            <h3>マンゴースティッキーライス</h3>
-            <p>旬の完熟マンゴーとココナッツソースをかけた甘じょっぱいデザート。</p>
-            <span>¥880</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="story" class="container">
-      <div class="story">
-        <img src="images/chef-story.jpg" alt="タイ料理を調理するシェフ">
+    <section class="section section-hero">
+      <div class="container hero">
         <div>
-          <h2>Our Story</h2>
-          <p>オーナーシェフのプライは、バンコクの老舗レストランで10年以上腕を磨き、タイと日本の食材を融合させた新しい食体験を目指しています。香り、彩り、心地よいサービス――Sabai（くつろぎ）という言葉に込められたおもてなしを大切にしています。</p>
-          <p>ハーブは有機農家から直接仕入れ、ペーストやソースもすべて手作り。クラフトカクテルやオリジナルティーとのペアリングもお楽しみいただけます。</p>
+          <h1>旬の香りとスパイスで、新しいタイの味を。</h1>
+          <p>Sabai Thai Kitchenでは、ハーブの香りとココナッツの甘みが絡み合う本場の味を、おしゃれで落ち着いた空間でお楽しみいただけます。現地で磨いた技術と、季節の食材で仕立てる一皿をぜひ。</p>
+          <a class="btn" href="#reserve">テーブルを予約する</a>
+        </div>
+        <img src="images/hero-table.jpg" alt="テーブルに並ぶタイ料理">
+      </div>
+    </section>
+
+    <section id="menu" class="section section-fill">
+      <div class="container">
+        <h2>Signature Menu</h2>
+        <div class="menu-grid">
+          <article class="menu-item">
+            <img src="images/tomyankun.jpg" alt="トムヤムクン">
+            <div class="menu-item-content">
+              <h3>トムヤムクン</h3>
+              <p>有頭エビの旨みとレモングラスの香り、ココナッツミルクのまろやかさが溶け合う人気のスープ。</p>
+              <span>¥1,280</span>
+            </div>
+          </article>
+          <article class="menu-item">
+            <img src="images/gapaorice.jpg" alt="ガパオライス">
+            <div class="menu-item-content">
+              <h3>ガパオライス</h3>
+              <p>ホーリーバジルと鶏挽肉を甘辛く炒めた定番料理。目玉焼きとジャスミンライスでどうぞ。</p>
+              <span>¥1,180</span>
+            </div>
+          </article>
+          <article class="menu-item">
+            <img src="images/green-curry.jpg" alt="グリーンカレー">
+            <div class="menu-item-content">
+              <h3>グリーンカレー</h3>
+              <p>青唐辛子とココナッツミルクのバランスが光る、クリーミーでスパイシーな逸品。</p>
+              <span>¥1,320</span>
+            </div>
+          </article>
+          <article class="menu-item">
+            <img src="images/mango-sticky-rice.jpg" alt="マンゴースティッキーライス">
+            <div class="menu-item-content">
+              <h3>マンゴースティッキーライス</h3>
+              <p>旬の完熟マンゴーとココナッツソースをかけた甘じょっぱいデザート。</p>
+              <span>¥880</span>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="gallery" class="container">
-      <h2>Gallery</h2>
-      <div class="gallery-grid">
-        <img src="images/papaya-salad.jpg" alt="ソムタム（青パパイヤサラダ）">
-        <img src="images/thai-drink.jpg" alt="ハーブティーとトロピカルドリンク">
-        <img src="images/restaurant-interior.jpg" alt="レストランの温かな内装">
-        <img src="images/kitchen-81493.jpg" alt="レストランのキッチン">
-      </div>
-    </section>
-
-    <section class="container">
-      <h2>Voices</h2>
-      <div class="testimonials">
-        <article class="testimonial-card">
-          <p>「香り高いハーブとスパイスが絶妙。見た目も美しく、女子会でも大好評でした。」</p>
-          <p><strong>- Kaya / フードスタイリスト</strong></p>
-        </article>
-        <article class="testimonial-card">
-          <p>「バンコクで食べた味そのまま。スタッフの笑顔とサービスで家族も大満足。」</p>
-          <p><strong>- Hiroshi / 旅行会社勤務</strong></p>
-        </article>
-        <article class="testimonial-card">
-          <p>「ペアリングドリンクが秀逸。辛さとのバランスがよく、食後も心地よく過ごせました。」</p>
-          <p><strong>- Mei / ソムリエ</strong></p>
-        </article>
-      </div>
-
-      <div id="reserve" class="reservation">
-        <h2>Reserve Your Table</h2>
-        <p>週末は混み合いますので、お早めのご予約がおすすめです。8名以上の貸切、ケータリングのご相談もお気軽にどうぞ。</p>
-        <a class="btn" href="tel:0312345678">03-1234-5678 に電話する</a>
-        <p style="margin-top: 12px;">または <a href="mailto:hello@sabaithaikitchen.jp">hello@sabaithaikitchen.jp</a> まで</p>
-      </div>
-    </section>
-
-    <section id="location" class="container">
-      <h2>Access</h2>
-      <div class="location-grid">
-        <div class="location-card">
-          <h3>Sabai Thai Kitchen</h3>
-          <dl>
-            <div>
-              <dt>住所</dt>
-              <dd>東京都渋谷区○○1-2-3 サバイビル1F</dd>
-            </div>
-            <div>
-              <dt>アクセス</dt>
-              <dd>渋谷駅ハチ公口より徒歩5分</dd>
-            </div>
-            <div>
-              <dt>営業時間</dt>
-              <dd>ランチ 11:30-15:00 / ディナー 17:00-23:00（L.O. 22:00）</dd>
-            </div>
-            <div>
-              <dt>定休日</dt>
-              <dd>月曜日</dd>
-            </div>
-          </dl>
-          <a class="btn" href="https://goo.gl/maps/mc4UCd1rg5FYkY3k7" target="_blank" rel="noopener">Googleマップで開く</a>
-          <p style="margin: 0; font-size: 0.95rem;">※ 団体・貸切のご相談はお電話またはメールで承ります。</p>
-        </div>
-        <div class="map-card">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.6326098290723!2d139.7005741763745!3d35.66032433184068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ca9a3995191%3A0xdaa1e90b9fc5f386!2z5riL6LC35Yy65rGQ5bO25aSn5a2mIOW_q-ato-WztuS4gOe5rg!5e0!3m2!1sja!2sjp!4v1726900000000!5m2!1sja!2sjp" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <section id="story" class="section section-tint">
+      <div class="container">
+        <div class="story">
+          <img src="images/chef-story.jpg" alt="タイ料理を調理するシェフ">
+          <div>
+            <h2>Our Story</h2>
+            <p>オーナーシェフのプライは、バンコクの老舗レストランで10年以上腕を磨き、タイと日本の食材を融合させた新しい食体験を目指しています。香り、彩り、心地よいサービス――Sabai（くつろぎ）という言葉に込められたおもてなしを大切にしています。</p>
+            <p>ハーブは有機農家から直接仕入れ、ペーストやソースもすべて手作り。クラフトカクテルやオリジナルティーとのペアリングもお楽しみいただけます。</p>
+          </div>
         </div>
       </div>
     </section>
+
+    <section id="gallery" class="section section-fill">
+      <div class="container">
+        <h2>Gallery</h2>
+        <div class="gallery-grid">
+          <img src="images/papaya-salad.jpg" alt="ソムタム（青パパイヤサラダ）">
+          <img src="images/thai-drink.jpg" alt="ハーブティーとトロピカルドリンク">
+          <img src="images/restaurant-interior.jpg" alt="レストランの温かな内装">
+          <img src="images/kitchen-81493.jpg" alt="レストランのキッチン">
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container">
+        <h2>Voices</h2>
+        <div class="testimonials">
+          <article class="testimonial-card">
+            <p>「香り高いハーブとスパイスが絶妙。見た目も美しく、女子会でも大好評でした。」</p>
+            <p><strong>- Kaya / フードスタイリスト</strong></p>
+          </article>
+          <article class="testimonial-card">
+            <p>「バンコクで食べた味そのまま。スタッフの笑顔とサービスで家族も大満足。」</p>
+            <p><strong>- Hiroshi / 旅行会社勤務</strong></p>
+          </article>
+          <article class="testimonial-card">
+            <p>「ペアリングドリンクが秀逸。辛さとのバランスがよく、食後も心地よく過ごせました。」</p>
+            <p><strong>- Mei / ソムリエ</strong></p>
+          </article>
+        </div>
+
+        <div id="reserve" class="reservation">
+          <h2>Reserve Your Table</h2>
+          <p>週末は混み合いますので、お早めのご予約がおすすめです。8名以上の貸切、ケータリングのご相談もお気軽にどうぞ。</p>
+          <a class="btn" href="tel:0312345678">03-1234-5678 に電話する</a>
+          <p style="margin-top: 12px;">または <a href="mailto:hello@sabaithaikitchen.jp">hello@sabaithaikitchen.jp</a> まで</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="location" class="section section-fill">
+      <div class="container">
+        <h2>Access</h2>
+        <div class="location-grid">
+          <div class="location-card">
+            <h3>Sabai Thai Kitchen</h3>
+            <dl>
+              <div>
+                <dt>住所</dt>
+                <dd>東京都渋谷区○○1-2-3 サバイビル1F</dd>
+              </div>
+              <div>
+                <dt>アクセス</dt>
+                <dd>渋谷駅ハチ公口より徒歩5分</dd>
+              </div>
+              <div>
+                <dt>営業時間</dt>
+                <dd>ランチ 11:30-15:00 / ディナー 17:00-23:00（L.O. 22:00）</dd>
+              </div>
+              <div>
+                <dt>定休日</dt>
+                <dd>月曜日</dd>
+              </div>
+            </dl>
+            <a class="btn" href="https://goo.gl/maps/mc4UCd1rg5FYkY3k7" target="_blank" rel="noopener">Googleマップで開く</a>
+            <p style="margin: 0; font-size: 0.95rem;">※ 団体・貸切のご相談はお電話またはメールで承ります。</p>
+          </div>
+          <div class="map-card">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.6326098290723!2d139.7005741763745!3d35.66032433184068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ca9a3995191%3A0xdaa1e90b9fc5f386!2z5riL6LC35Yy65rGQ5bO25aSn5a2mIOW_q-ato-WztuS4gOe5rg!5e0!3m2!1sja!2sjp!4v1726900000000!5m2!1sja!2sjp" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="menu-modal" id="menu-modal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="menu-modal__content">
+        <button class="menu-modal__close" type="button" aria-label="閉じる">×</button>
+        <img class="menu-modal__image" src="" alt="" id="menu-modal-image">
+        <h3 class="menu-modal__title" id="menu-modal-title"></h3>
+        <p class="menu-modal__description" id="menu-modal-description"></p>
+        <span class="menu-modal__price" id="menu-modal-price"></span>
+      </div>
+    </div>
+
   </main>
 
   <footer>
@@ -500,5 +631,77 @@
       <p>東京都渋谷区○○1-2-3 | 17:00 - 23:00（L.O. 22:00）</p>
     </div>
   </footer>
+  <script>
+    (function () {
+      const modal = document.getElementById('menu-modal');
+      const modalImage = document.getElementById('menu-modal-image');
+      const modalTitle = document.getElementById('menu-modal-title');
+      const modalDescription = document.getElementById('menu-modal-description');
+      const modalPrice = document.getElementById('menu-modal-price');
+      const closeButton = modal.querySelector('.menu-modal__close');
+      const menuItems = document.querySelectorAll('.menu-item');
+      let lastFocusedElement = null;
+
+      const openModal = (info) => {
+        modalImage.src = info.imageSrc;
+        modalImage.alt = info.imageAlt;
+        modalTitle.textContent = info.title;
+        modalDescription.textContent = info.description;
+        modalPrice.textContent = info.price;
+        lastFocusedElement = document.activeElement;
+        modal.classList.add('is-visible');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+        closeButton.focus();
+      };
+
+      const closeModal = () => {
+        modal.classList.remove('is-visible');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+          lastFocusedElement.focus();
+        }
+      };
+
+      menuItems.forEach((item) => {
+        item.setAttribute('tabindex', '0');
+        const handleActivate = () => {
+          const image = item.querySelector('img');
+          const description = item.querySelector('p');
+          const price = item.querySelector('span');
+          const title = item.querySelector('h3');
+
+          openModal({
+            imageSrc: image ? image.getAttribute('src') : '',
+            imageAlt: image ? image.getAttribute('alt') : '',
+            title: title ? title.textContent : '',
+            description: description ? description.textContent : '',
+            price: price ? price.textContent : ''
+          });
+        };
+
+        item.addEventListener('click', handleActivate);
+        item.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            handleActivate();
+          }
+        });
+      });
+
+      closeButton.addEventListener('click', closeModal);
+      modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.classList.contains('is-visible')) {
+          closeModal();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
