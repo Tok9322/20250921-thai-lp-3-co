@@ -79,6 +79,25 @@
       font-weight: 500;
     }
 
+    .hero-banner {
+      width: 100%;
+      height: clamp(320px, 46vw, 580px);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-banner img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 106%;
+      height: auto;
+      min-height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform: translate(-50%, -50%);
+    }
+
     .hero {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -474,6 +493,10 @@
       </nav>
     </div>
   </header>
+
+  <section class="hero-banner">
+    <img src="images/hero-4.jpg" alt="Sabai Thai Kitchen の店内の雰囲気">
+  </section>
 
   <main>
     <section class="section section-hero">
